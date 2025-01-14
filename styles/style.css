@@ -56,7 +56,8 @@ header {
 }
 
 .type {
-  padding: 5px 10px;
+  padding: 5px 10px ;
+  margin-top:15px !important;
   border-radius: 5px;
   color: #fff;
   margin: 2px;
@@ -243,4 +244,14 @@ header {
 
 .paddtop button:hover{
   cursor:pointer;
+}
+
+.types{
+  margin-top:16px;
+  margin-bottom:16px;
+}
+
+.abilities{
+  margin-top:16px;
+  margin-bottom:16px;
 }
