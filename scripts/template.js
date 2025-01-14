@@ -18,3 +18,26 @@ function pokemonCardHTML(pokemon) {
       </div>
     `;
 }
+
+
+async function showDetails(pokemonId) {
+    const pokemon = await fetchPokemonDetails(`${POKEAPI_URL}${pokemonId}`);
+    const overlay = document.getElementById('overlay');
+    const details = document.getElementById('pokemon-details');
+  
+    let typesHTML = '';
+    for (let i = 0; i < pokemon.types.length; i++) {
+      typesHTML += `<span class="type ${pokemon.types[i].type.name}">${pokemon.types[i].type.name}</span>`;
+    }
+  
+    details.innerHTML = `
+      <h2>${pokemon.name}</h2>
+      <img src="${pokemon.sprites.other['official-artwork'].front_default}" alt="${pokemon.name}">
+      <p>Height: ${pokemon.height}</p>
+      <p>Weight: ${pokemon.weight}</p>
+      <p>Base Experience: ${pokemon.base_experience}</p>
+      <div class="types">${typesHTML}</div>
+    `;
+  
+    overlay.classList.remove('hidden');
+  }

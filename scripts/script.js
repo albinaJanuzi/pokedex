@@ -2,7 +2,7 @@ const POKEAPI_URL = 'https://pokeapi.co/api/v2/pokemon/';
 let offset = 0;
 const limit = 20;
 
-
+//RENDER && FETCH
 async function fetchPokemons() {
   try {
     const response = await fetch(`${POKEAPI_URL}?offset=${offset}&limit=${limit}`);
@@ -30,3 +30,12 @@ async function renderPokemons(pokemons) {
 }
 
 fetchPokemons();
+
+//POKEMON DETAILS
+async function fetchPokemonDetails(url) {
+  const response = await fetch(url);
+  return response.json();
+}
+
+
+
