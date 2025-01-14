@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,13 @@
   <script src="./scripts/script.js" defer></script>
   <script src="./scripts/template.js"></script>
 </head>
+
 <body>
   <header>
     <h1>Pokedex</h1>
-    <input type="text" id="search-input" oninput="searchPokemons(this)" placeholder="Search for a Pokémon...">
+
   </header>
+  <input type="text" id="search-input" oninput="searchPokemons(this)" placeholder="Search for a Pokémon...">
   <main id="pokedex"></main>
   <div id="loading" class="loading hidden">
     <div class="spinner"></div>
@@ -23,11 +26,14 @@
     <div id="overlay-content">
       <div id="pokemon-details"></div>
       <button id="close-btn" onclick="closeOverlay()">X</button>
-      <button id="prev-btn" onclick="navigatePokemon(-1)">←</button>
-      <button id="next-btn" onclick="navigatePokemon(1)">→</button>
+      <div class="paddtop">
+        <button id="prev-btn" onclick="navigatePokemon(-1)">←</button>
+        <button id="next-btn" onclick="navigatePokemon(1)">→</button>
+      </div>
     </div>
-    
+
   </div>
-  
+
 </body>
+
 </html>

@@ -59,6 +59,7 @@ header {
   padding: 5px 10px;
   border-radius: 5px;
   color: #fff;
+  margin: 2px;
 }
 
 .type.grass { background: #78c850; }
@@ -68,6 +69,9 @@ header {
 .type.normal{background-color: darkslategrey;}
 .type.flying{background-color: blueviolet;}
 .type.poison{background-color:darkgoldenrod}
+.type.electric{background-color: cadetblue;}
+.type.ground{background-color: deeppink;}
+.type.fairy{background-color: lightpink;}
 
 #load-more {
   display: block;
@@ -222,4 +226,21 @@ header {
   font-size: 16px;
   font-weight: bold;
   text-align: center;
+}
+
+.paddtop{
+  padding-top: 20px;
+}
+
+.paddtop button{
+  background: #ff4c4c;
+  color:white;
+  border:none;
+  padding:10px;
+  font-size:16px;
+  border-radius: 5px;
+}
+
+.paddtop button:hover{
+  cursor:pointer;
 }

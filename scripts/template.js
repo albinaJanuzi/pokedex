@@ -36,6 +36,9 @@ async function showDetails(pokemonId) {
       <p>Base Experience: ${pokemon.base_experience}</p>
       <div class="types">${typesHTML}</div>
     `;
-  
+
+    overlay.dataset.currentPokemonId = pokemonId;
     overlay.classList.remove('hidden');
   }
+
+ 

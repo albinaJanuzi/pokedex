@@ -62,5 +62,14 @@ function hideLoading() {
  
 }
 
+async function navigatePokemon(direction) {
+  const overlay = document.getElementById('overlay');
+  let currentPokemonId = parseInt(overlay.dataset.currentPokemonId);
+  const nextPokemonId = currentPokemonId + direction;
+  if (nextPokemonId < 1) return; 
+  showDetails(nextPokemonId);
+}
+
+
 
 fetchPokemons();
