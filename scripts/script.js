@@ -31,10 +31,16 @@ async function renderPokemons(pokemons) {
 
 fetchPokemons();
 
+
 //POKEMON DETAILS
 async function fetchPokemonDetails(url) {
   const response = await fetch(url);
   return response.json();
+}
+
+
+function closeOverlay() {
+  document.getElementById('overlay').classList.add('hidden');  
 }
 
 
