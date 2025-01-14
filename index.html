@@ -14,7 +14,10 @@
     <input type="text" id="search-input" oninput="searchPokemons(this)" placeholder="Search for a Pokémon...">
   </header>
   <main id="pokedex"></main>
-  <button id="load-more">Load More Pokémon</button>
+  <div id="loading" class="loading hidden">
+    <p>Loading...</p>
+  </div>
+  <button id="load-more" onclick="loadMorePokemons()">Load More Pokemon</button>
   <div id="overlay" class="overlay hidden">
     <div id="overlay-content">
       <div id="pokemon-details"></div>

@@ -8,8 +8,6 @@ function pokemonCardHTML(pokemon) {
     } else {
         typesHTML = '<span class="type unknown">No Types</span>';
     }
-
-    // Display URL below types
     return `
       <div class="pokemon-card" onclick="showDetails(${pokemon.id})">
         <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
