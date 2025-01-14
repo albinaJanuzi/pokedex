@@ -1,0 +1,172 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  background: #f8f9fa;
+}
+
+#search {
+  width: 300px;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Pokedex Grid */
+#pokedex {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.pokemon-card {
+  text-align: center;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.pokemon-card:hover {
+  transform: scale(1.05);
+}
+
+.pokemon-card img {
+  width: 100px;
+  height: 100px;
+}
+
+.pokemon-card .name {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.pokemon-card .types {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.type {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+/* Type Colors */
+.type.grass { background: #78c850; }
+.type.fire { background: #f08030; }
+.type.water { background: #6890f0; }
+.type.bug {background:#ff4c4c}
+.type.normal{background-color: darkslategrey;}
+.type.flying{background-color: blueviolet;}
+.type.poison{background-color:darkgoldenrod}
+/* Add more type colors as needed */
+
+/* Load More Button */
+#load-more {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#load-more:hover {
+  background: #0056b3;
+}
+
+/* Overlay */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#overlay.hidden {
+  display: none;
+}
+
+#overlay-content {
+  position: relative; /* Make this relative so the button can be positioned inside it */
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+}
+#close-overlay {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #ff4c4c;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#close-btn {
+  position: absolute;
+  top: 10px; /* Distance from the top */
+  right: 10px; /* Distance from the right */
+  background: #ff4c4c;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.url {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.url a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.url a:hover {
+  text-decoration: underline;
+}
+
