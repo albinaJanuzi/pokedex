@@ -15,6 +15,7 @@
   </header>
   <main id="pokedex"></main>
   <div id="loading" class="loading hidden">
+    <div class="spinner"></div>
     <p>Loading...</p>
   </div>
   <button id="load-more" onclick="loadMorePokemons()">Load More Pokemon</button>
@@ -22,7 +23,10 @@
     <div id="overlay-content">
       <div id="pokemon-details"></div>
       <button id="close-btn" onclick="closeOverlay()">X</button>
+      <button id="prev-btn" onclick="navigatePokemon(-1)">←</button>
+      <button id="next-btn" onclick="navigatePokemon(1)">→</button>
     </div>
+    
   </div>
   
 </body>

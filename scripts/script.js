@@ -43,19 +43,23 @@ function loadMorePokemons() {
   showLoading(); 
   setTimeout(() => {
     fetchPokemons(); 
-  }, 200);
+  }, 300);
 }
 
 //LOADING SCREEN SHOW
 function showLoading() {
-  document.getElementById('loading').classList.remove('hidden');
-  document.getElementById('load-more').disabled = true; 
+  const showLoadingRef = document.getElementById('loading');
+  showLoadingRef.classList.remove('hidden');
+  document.getElementById('load-more').disabled = true;
+ 
 }
 
 //LOADING SCREEN HIDE
 function hideLoading() {
-  document.getElementById('loading').classList.add('hidden');
-  document.getElementById('load-more').disabled = false; 
+  const hideLoadingRef = document.getElementById('loading');
+  hideLoadingRef.classList.add('hidden');
+  document.getElementById('load-more').disabled = false;
+ 
 }
 
 

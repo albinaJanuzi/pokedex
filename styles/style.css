@@ -19,7 +19,6 @@ header {
   border-radius: 5px;
 }
 
-/* Pokedex Grid */
 #pokedex {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -62,7 +61,6 @@ header {
   color: #fff;
 }
 
-/* Type Colors */
 .type.grass { background: #78c850; }
 .type.fire { background: #f08030; }
 .type.water { background: #6890f0; }
@@ -70,9 +68,7 @@ header {
 .type.normal{background-color: darkslategrey;}
 .type.flying{background-color: blueviolet;}
 .type.poison{background-color:darkgoldenrod}
-/* Add more type colors as needed */
 
-/* Load More Button */
 #load-more {
   display: block;
   margin: 20px auto;
@@ -88,7 +84,6 @@ header {
   background: #0056b3;
 }
 
-/* Overlay */
 #overlay {
   position: fixed;
   top: 0;
@@ -107,7 +102,7 @@ header {
 }
 
 #overlay-content {
-  position: relative; /* Make this relative so the button can be positioned inside it */
+  position: relative; 
   background: #fff;
   padding: 20px;
   border-radius: 10px;
@@ -115,6 +110,7 @@ header {
   max-width: 500px;
   text-align: center;
 }
+
 #close-overlay {
   position: absolute;
   top: 20px;
@@ -185,6 +181,45 @@ header {
   z-index: 9999;
 }
 
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; 
+}
+
 .hidden {
   display: none;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #f3f3f3; 
+  border-top: 6px solid #007bff; 
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading p {
+  margin-top: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
 }
