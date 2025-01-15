@@ -36,13 +36,23 @@ async function fetchPokemonDetails(url) {
 }
 
 function closeOverlay() {
-  document.getElementById('overlay').classList.add('hidden');  
+  const overlay = document.getElementById('overlay');
+  overlay.classList.add('hidden'); 
+}
+
+
+function handleOverlayClick(event) {
+  const overlay = document.getElementById('overlay');
+  
+
+  if (event.target === overlay) {
+    closeOverlay();
+  }
 }
 
 //LOAD MORE POKEMONS BUTTON
 function loadMorePokemons() {
   if (isSearching) {
-    // If a search is active, do not allow loading more
     return;
   }
 
@@ -77,29 +87,29 @@ async function navigatePokemon(direction) {
 }
 
 
-let isSearching = false; // Zustand der Suche
+let isSearching = false; 
 
 function searchPokemons(input) {
   const searchQuery = input.value.trim().toLowerCase();
 
   const loadMoreButton = document.getElementById('load-more');
   if (searchQuery.length < 3) {
-    isSearching = false; // Suche deaktivieren
+    isSearching = false; 
     document.getElementById('pokedex').innerHTML = '';
-    fetchPokemons(); // Initiale Liste erneut laden
-    loadMoreButton.disabled = false; // "Load More"-Button aktivieren
+    fetchPokemons(); 
+    loadMoreButton.disabled = false; 
     return;
   }
 
-  isSearching = true; // Suche aktivieren
-  loadMoreButton.disabled = true; // "Load More"-Button deaktivieren
+  isSearching = true; 
+  loadMoreButton.disabled = true;
   searchForPokemons(searchQuery);
 }
 
 async function searchForPokemons(query) {
   showLoading();
   try {
-    const allPokemonResponse = await fetch(`${POKEAPI_URL}?limit=1000`); // Fetch all Pokémon
+    const allPokemonResponse = await fetch(`${POKEAPI_URL}?limit=1000`);
     const allPokemonData = await allPokemonResponse.json();
     const filteredPokemons = [];
 
@@ -110,20 +120,26 @@ async function searchForPokemons(query) {
       }
     }
 
-    // Limit the displayed Pokémon to 10
-    const limitedPokemons = filteredPokemons.slice(0, 10);
 
-    // Clear the Pokedex and render the limited results
-    document.getElementById('pokedex').innerHTML = '';
-    await renderPokemons(limitedPokemons);
+    if (filteredPokemons.length === 0) {
+      displayNoResultsMessage(); 
+    } else {
+     
+      const limitedPokemons = filteredPokemons.slice(0, 10);
+      document.getElementById('pokedex').innerHTML = ''; 
+      await renderPokemons(limitedPokemons);
+    }
 
-    // Disable the Load More button when search results are displayed
+
     document.getElementById('load-more').disabled = true;
   } catch (error) {
     console.error('Error searching Pokémon:', error);
   }
-  hideLoading(); // Hide the loading spinner
+  hideLoading(); 
 }
 
-
+function displayNoResultsMessage() {
+  const pokedex = document.getElementById('pokedex');
+  pokedex.innerHTML = '<div class="no-results">No Resulsts!</div>';
+}
 fetchPokemons();

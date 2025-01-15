@@ -3,24 +3,48 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: rgb(19, 73, 93);
 }
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+
 
 header {
   text-align: center;
   padding: 20px;
-  background: #f8f9fa;
+  background-color: rgb(13, 50, 64);
   display: flex;
     justify-content: space-between;
     align-items: center;
 }
+footer{
+  background-color: rgb(13, 50, 64);
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer img{
+  height:80px;
+  width:80px;
+ border-radius: 100%;
+}
+h1{
+  color:white;
+}
 
 header input{
   padding:8px;
+  color:black
 }
 
 header img{
-  width: 30px;
-  height:30px;
+  width: 40px;
+  height:40px;
   padding-left:10px;
   padding-right:10px;
 }
@@ -199,6 +223,7 @@ header img{
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  overflow: hidden;
 }
 
 #overlay.hidden {
@@ -328,17 +353,20 @@ header img{
   text-align: center;
 }
 
-.paddtop{
+.next-prev-btn{
   padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.paddtop button{
+.next-prev-btn button{
   background: #ff4c4c;
   color:white;
   border:none;
   padding:10px;
   font-size:16px;
   border-radius: 5px;
+  cursor:pointer;
 }
 
 .paddtop button:hover{
@@ -353,4 +381,10 @@ header img{
 .abilities{
   margin-top:16px;
   margin-bottom:16px;
+}
+
+.no-results{
+  color:white;
+  display: flex;
+  justify-content: center;
 }
