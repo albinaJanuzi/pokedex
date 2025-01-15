@@ -388,3 +388,9 @@ header img{
   display: flex;
   justify-content: center;
 }
+
+@media (max-width:450px) {
+  header{
+    flex-direction: column;
+  }
+}
