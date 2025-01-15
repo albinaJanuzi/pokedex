@@ -1,22 +1,46 @@
 function pokemonCardHTML(pokemon) {
-    let typesHTML = '';
+  let typesHTML = '';
+  let mainTypeClass = '';
+  const typeImages = {
+    grass: './images/grass-logo.png',
+    fire: './images/fire-logo.png', 
+    flying: './images/flying-logo.png',
+    poison: './images/poison-logo.png', 
+    water: './images/water-logo.png',
+    fairy: './images/fairy.png',
+    electric: './images/electric-logo.png',
+    normal: './images/normal-logo.webp',
+    ground: './images/ground-logo.png',
+    bug: './images/bug-logo.png',
+    fighting: './images/fighting-logo.jpg',
+    psychic: './images/psychic-logo.png',
+  };
 
-    if (pokemon.types && pokemon.types.length > 0) {
-        for (let i = 0; i < pokemon.types.length; i++) {
-            typesHTML += `<span class="type ${pokemon.types[i].type.name}">${pokemon.types[i].type.name}</span>`;
-        }
-    } else {
-        typesHTML = '<span class="type unknown">No Types</span>';
+  if (pokemon.types && pokemon.types.length > 0) {
+    for (let i = 0; i < pokemon.types.length; i++) {
+      const typeName = pokemon.types[i].type.name;
+
+      // Check if the type has an associated image
+      if (typeImages[typeName]) {
+        typesHTML += `<span class="type ${typeName}" style="background-image: url('${typeImages[typeName]}');"></span>`;
+      } else {
+        typesHTML += `<span class="type ${typeName}">${typeName}</span>`;
+      }
     }
-    return `
-      <div class="pokemon-card" onclick="showDetails(${pokemon.id})">
-        <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
-        <div class="name">${pokemon.name}</div>
-        <div class="types">${typesHTML}</div>
-      </div>
-    `;
-}
+    mainTypeClass = pokemon.types[0].type.name; // Main type
+  } else {
+    typesHTML = '<span class="type unknown">No Types</span>';
+    mainTypeClass = 'unknown'; // Default fallback
+  }
 
+  return `
+    <div class="pokemon-card ${mainTypeClass}" onclick="showDetails(${pokemon.id})">
+      <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
+      <div class="name">${pokemon.name}</div>
+      <div class="types">${typesHTML}</div>
+    </div>
+  `;
+}
 
 async function showDetails(pokemonId) {
     const pokemon = await fetchPokemonDetails(`${POKEAPI_URL}${pokemonId}`);
@@ -25,7 +49,7 @@ async function showDetails(pokemonId) {
   
     let typesHTML = '';
     for (let i = 0; i < pokemon.types.length; i++) {
-      typesHTML += `<span class="type ${pokemon.types[i].type.name}">${pokemon.types[i].type.name}</span>`;
+      typesHTML += `<span class="pokemon-card type  ${pokemon.types[i].type.name}">${pokemon.types[i].type.name}</span>`;
     }
 
     let abilitiesHTML = '';
