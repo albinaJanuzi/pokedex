@@ -1,22 +1,4 @@
-function getPokemonTypesHTML(pokemon, typeImages) {
-  let typesHTML = '';
-  if (pokemon.types && pokemon.types.length > 0) {
-    for (let i = 0; i < pokemon.types.length; i++) {
-      const typeName = pokemon.types[i].type.name;
-      if (typeImages[typeName]) {
-        typesHTML += `<span class="type ${typeName}" style="background-image: url('${typeImages[typeName]}');"></span>`;
-      } else {
-        typesHTML += `<span class="type ${typeName}">${typeName}</span>`;
-      }
-    }
-  } else {
-    typesHTML = '<span class="type unknown">No Types</span>';
-  }
-  return typesHTML;
-}
-
-
-function pokemonCardHTML(pokemon) {
+function pokemonCardHTML(pokemon) {//bild, name, type mit passendes symbol
   const typeImages = {
     grass: './images/grass-logo.png',
     fire: './images/fire-logo.png',
@@ -41,6 +23,23 @@ function pokemonCardHTML(pokemon) {
       <div class="types">${typesHTML}</div>
     </div>
   `;
+}
+
+function getPokemonTypesHTML(pokemon, typeImages) {//Html für die Typen eines Pokemons
+  let typesHTML = '';
+  if (pokemon.types && pokemon.types.length > 0) {
+    for (let i = 0; i < pokemon.types.length; i++) {
+      const typeName = pokemon.types[i].type.name;
+      if (typeImages[typeName]) {
+        typesHTML += `<span class="type ${typeName}" style="background-image: url('${typeImages[typeName]}');"></span>`;
+      } else {
+        typesHTML += `<span class="type ${typeName}">${typeName}</span>`;
+      }
+    }
+  } else {
+    typesHTML = '<span class="type unknown">No Types</span>';
+  }
+  return typesHTML;
 }
 
 
@@ -69,26 +68,7 @@ function generateAbilitiesHTML(abilities) {
 }
 
 
-function generatePokemonDetailsHTML(pokemon) {
-  const typesHTML = generateTypesHTML(pokemon.types);
-  const abilitiesHTML = generateAbilitiesHTML(pokemon.abilities);
-
-  const heightInMeter = (pokemon.height / 10).toFixed(1);
-  const weightInKg = (pokemon.weight / 10).toFixed(1);
-
-  return `
-    <h2>${pokemon.name}</h2>
-    <img src="${pokemon.sprites.other['official-artwork'].front_default}" alt="${pokemon.name}">
-    <p>Height: ${heightInMeter} m</p>
-    <p>Weight: ${weightInKg} kg</p>
-    <p>Base Experience: ${pokemon.base_experience}</p>
-    <div class="abilities">Abilities: ${abilitiesHTML}</div>  
-    <div class="types">${typesHTML}</div>
-  `;
-}
-
-
-async function showDetails(pokemonId) {
+async function showDetails(pokemonId) {// html für type, height, weight, abilities
   const pokemon = await fetchPokemonDetails(`${POKEAPI_URL}${pokemonId}`);
   const overlay = document.getElementById('overlay');
   const details = document.getElementById('pokemonDetails');
@@ -100,6 +80,24 @@ async function showDetails(pokemonId) {
   document.body.classList.add('no-scroll'); 
 }
 
+
+function generatePokemonDetailsHTML(pokemon) {
+  const typesHTML = generateTypesHTML(pokemon.types);
+  const abilitiesHTML = generateAbilitiesHTML(pokemon.abilities);
+
+  const heightInMeter = (pokemon.height / 10).toFixed(1); // height in meter
+  const weightInKg = (pokemon.weight / 10).toFixed(1); //weight in kg
+
+  return `
+    <h2>${pokemon.name}</h2>
+    <img src="${pokemon.sprites.other['official-artwork'].front_default}" alt="${pokemon.name}">
+    <p>Height: ${heightInMeter} m</p>
+    <p>Weight: ${weightInKg} kg</p>
+    <p>Base Experience: ${pokemon.base_experience}</p>
+    <div class="abilities">Abilities: ${abilitiesHTML}</div>  
+    <div class="types">${typesHTML}</div>
+  `;
+}
 
 function closeOverlay() {
 document.getElementById('overlay').classList.add('hidden');

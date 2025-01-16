@@ -1,6 +1,6 @@
-const POKEAPI_URL = 'https://pokeapi.co/api/v2/pokemon/';
-let offset = 0;
-const limit = 24;
+const POKEAPI_URL = 'https://pokeapi.co/api/v2/pokemon/'; //Pokemon daten von der PokeAPI abrufen
+let offset = 0; // startindex - ab welchen pokemon die Daten laden
+const limit = 24; // anzahl der pokemon
 
 //FETCH ALL POKEMONS
 async function fetchPokemons() {
@@ -31,13 +31,13 @@ async function renderPokemons(pokemons) {
 
 
 // POKEMON DETAILS - OVERLAY
-async function fetchPokemonDetails(url) {
+async function fetchPokemonDetails(url) { // Details einzelnen für pokemon
   const response = await fetch(url);
   return response.json();
 }
 
 
-function closeOverlay() {
+function closeOverlay() {// klasse hidden in overlay hinzufügen
   const overlayRef = document.getElementById('overlay');
   overlayRef.classList.add('hidden'); 
 }
@@ -45,10 +45,10 @@ function closeOverlay() {
 
 //LOAD MORE POKEMONS BUTTON
 function loadMorePokemons() {
-  if (isSearching) {
+  if (isSearching) {//läuft gerade eine suche?
     return;
   }
-  showLoading(); 
+  showLoading(); //wenn nicht dann showLoading
   setTimeout(() => {
     fetchPokemons(); 
   }, 300);
@@ -58,7 +58,7 @@ function loadMorePokemons() {
 function showLoading() {
   const showLoadingRef = document.getElementById('loading');
   showLoadingRef.classList.remove('hidden');
-  document.getElementById('loadMore').disabled = true;
+  document.getElementById('loadMore').disabled = true;//Load more button nicht clickbar wenn showLoading
 }
 
 //LOADING SCREEN HIDE
@@ -93,7 +93,7 @@ function searchPokemons(input) {
 
 async function fetchAndFilterPokemons(query) {
   try {
-    const allPokemonResponse = await fetch(`${POKEAPI_URL}?limit=1000`);
+    const allPokemonResponse = await fetch(`${POKEAPI_URL}?limit=1000`);//all
     const allPokemonData = await allPokemonResponse.json();
     return allPokemonData.results.filter(pokemon => pokemon.name.includes(query));
   } catch (error) {
@@ -103,7 +103,7 @@ async function fetchAndFilterPokemons(query) {
 }
 
 
-async function searchForPokemons(query) {
+async function searchForPokemons(query) {//alle pokemons search und filter mit name, nur 10 ergebnisse zeigen
   showLoading();
   const filteredPokemons = await fetchAndFilterPokemons(query);
   if (filteredPokemons.length === 0) {
