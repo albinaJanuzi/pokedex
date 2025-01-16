@@ -92,16 +92,12 @@ let isSearching = false;
 function searchPokemons(input) {
   const searchQuery = input.value.trim().toLowerCase();
 
-  const loadMoreButton = document.getElementById('load-more');
   if (searchQuery.length < 3) {
-    isSearching = false; 
-    document.getElementById('pokedex').innerHTML = '';
-    fetchPokemons(); 
-    loadMoreButton.disabled = false; 
     return;
   }
 
-  isSearching = true; 
+  const loadMoreButton = document.getElementById('load-more');
+  isSearching = true;
   loadMoreButton.disabled = true;
   searchForPokemons(searchQuery);
 }

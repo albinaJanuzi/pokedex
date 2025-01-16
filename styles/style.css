@@ -389,6 +389,10 @@ header img{
   justify-content: center;
 }
 
+.height-div{
+  height: 59vh;
+}
+
 @media (max-width:450px) {
   header{
     flex-direction: column;
