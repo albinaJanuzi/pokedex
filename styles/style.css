@@ -10,17 +10,16 @@ body.no-scroll {
   overflow: hidden;
 }
 
-
-
 header {
   text-align: center;
   padding: 20px;
   background-color: rgb(13, 50, 64);
   display: flex;
-    justify-content: space-between;
-    align-items: center;
+  justify-content: space-between;
+  align-items: center;
 }
-footer{
+
+footer {
   background-color: rgb(13, 50, 64);
   height: 180px;
   display: flex;
@@ -33,6 +32,7 @@ footer img{
   width:80px;
  border-radius: 100%;
 }
+
 h1{
   color:white;
 }
@@ -51,7 +51,7 @@ header img{
 
 .img-h1{
   display: flex;
-    align-items: center;
+  align-items: center;
 }
 
 #search {
@@ -63,10 +63,11 @@ header img{
 }
 
 #pokedex {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 15px;
   padding: 20px;
+  justify-content: space-around;
 }
 
 .pokemon-card {
@@ -101,8 +102,6 @@ header img{
   height: 100px;
 }
 
-
-
 .pokemon-card .name {
   font-weight: bold;
   margin-top: 10px;
@@ -122,82 +121,17 @@ header img{
   margin: 2px;
 }
 
-.type.grass { 
+.type.grass, .type.fire, .type.water, .type.bug, .type.normal,
+.type.flying, .type.poison, .type.electric, .type.ground,
+.type.fairy, .type.fighting, .type.psychic {
   width: 10px;
   height: 20px;
-  background-size: cover; 
-  background-position: center;          
-}
-.type.fire { 
-  width: 10px;
-  height: 20px;
-  background-size: cover; 
-  background-position: center; 
-}
-.type.water {
-  width: 10px;
-  height: 20px;
-  background-size: cover; 
-  background-position: center;
-}
-.type.bug {
-  width: 10px;
-  height: 20px;
-  background-size: cover; 
-  background-position: center;
-}
-.type.normal{
-  width: 10px;
-  height: 20px;
-  background-size: cover; 
-  background-position: center;
-}
-.type.flying{
-  width: 10px;
-  height: 20px;
-  background-size: cover; 
-  background-position: center;
-}
-.type.poison{
-  width: 10px;
-  height: 20px;
-  background-size: cover; 
-  background-position: center;
-}
-.type.electric{
-  width: 10px;
-  height: 20px;
-  background-size: cover; 
+  background-size: cover;
   background-position: center;
   border-radius: 100%;
-}
-.type.ground{
-  width: 10px;
-  height: 20px;
-  background-size: cover; 
-  background-position: center;
-}
-.type.fairy{
-  width: 10px;
-  height: 20px;
-  background-size: cover; 
-  background-position: center;
-}
-.type.fighting{
-  width: 10px;
-  height: 20px;
-  background-size: cover; 
-  background-position: center;
-  border-radius: 100%;
-}
-.type.psychic{
-  width: 10px;
-  height: 20px;
-  background-size: cover; 
-  background-position: center;
 }
 
-#load-more {
+#loadMore {
   display: block;
   margin: 20px auto;
   padding: 10px 20px;
@@ -230,7 +164,7 @@ header img{
   display: none;
 }
 
-#overlay-content {
+#overlayContent {
   position: relative; 
   background: #fff;
   padding: 20px;
@@ -268,7 +202,7 @@ header img{
   align-items: center;
 }
 
-#close-btn {
+#closeBtn{
   position: absolute;
   top: 10px; /* Distance from the top */
   right: 10px; /* Distance from the right */
@@ -396,5 +330,8 @@ header img{
 @media (max-width:450px) {
   header{
     flex-direction: column;
+  }
+  #pokedex{
+    padding:5px;
   }
 }

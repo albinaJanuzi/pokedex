@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
   <title>Pokedex</title>
   <link rel="stylesheet" href="./styles/style.css">
   <link rel="icon" type="image/x-icon" href="./images/pokemon-logo.webp">
@@ -15,32 +14,31 @@
 <body>
   <header>
     <div class="img-h1">
-    <img src="./images/pokemon-logo.webp" alt="">
-    <h1>Pokedex</h1></div>
-    <input type="text" id="search-input" oninput="searchPokemons(this)" placeholder="Search for a Pokemon...">
+      <img src="./images/pokemon-logo.webp" alt="">
+      <h1>Pokedex</h1>
+    </div>
+    <input type="text" oninput="searchPokemons(this)" placeholder="Search for a Pokemon...">
   </header>
-  
   <main id="pokedex"></main>
   <div id="loading" class="loading hidden">
     <div class="spinner"></div>
     <p>Loading...</p>
   </div>
-  <div class="height-div"><button id="load-more" onclick="loadMorePokemons()">Load More Pokemon</button></div>
+  <div class="height-div">
+    <button id="loadMore" onclick="loadMorePokemons()">Load More Pokemon</button>
+  </div>
   <div id="overlay" class="overlay hidden" onclick="closeOverlay()">
-    <div id="overlay-content" onclick="event.stopPropagation()">
-      <div id="pokemon-details"></div>
-      <button id="close-btn" onclick="closeOverlay()">X</button>
+    <div id="overlayContent" onclick="event.stopPropagation()">
+      <div id="pokemonDetails"></div>
+      <button id="closeBtn" onclick="closeOverlay()">X</button>
       <div class="next-prev-btn">
-        <button id="prev-btn" onclick="navigatePokemon(-1)">←</button>
-        <button id="next-btn" onclick="navigatePokemon(1)">→</button>
+        <button id="prevBtn" onclick="navigatePokemon(-1)">←</button>
+        <button id="nextBtn" onclick="navigatePokemon(1)">→</button>
       </div>
     </div>
-   
-
   </div>
   <footer>
     <img src="./images/pokemon-logo.webp" alt="">
   </footer>
 </body>
-
 </html>
