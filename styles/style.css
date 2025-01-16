@@ -335,3 +335,30 @@ header img{
     padding:5px;
   }
 }
+
+@media (max-width:580px) {
+  #overlayContent {
+    max-width: 400px;
+}
+#overlayContent img {
+  max-width: 100%;
+}
+}
+
+@media (max-width:480px) {
+  #overlayContent {
+    max-width: 300px;
+}
+#overlayContent img {
+  max-width: 100%;
+}
+}
+
+@media (max-width:385px) {
+  #overlayContent {
+    max-width: 250px;
+}
+#overlayContent img {
+  max-width: 100%;
+}
+}
