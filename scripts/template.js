@@ -25,61 +25,6 @@ function pokemonCardHTML(pokemon) {//bild, name, type mit passendes symbol
   `;
 }
 
-function getPokemonTypesHTML(pokemon, typeImages) {//Html für die Typen eines Pokemons
-  let typesHTML = '';
-  if (pokemon.types && pokemon.types.length > 0) {
-    for (let i = 0; i < pokemon.types.length; i++) {
-      const typeName = pokemon.types[i].type.name;
-      if (typeImages[typeName]) {
-        typesHTML += `<span class="type ${typeName}" style="background-image: url('${typeImages[typeName]}');"></span>`;
-      } else {
-        typesHTML += `<span class="type ${typeName}">${typeName}</span>`;
-      }
-    }
-  } else {
-    typesHTML = '<span class="type unknown">No Types</span>';
-  }
-  return typesHTML;
-}
-
-
-function generateTypesHTML(types) {
-  let typesHTML = '';
-  for (let i = 0; i < types.length; i++) {
-    typesHTML += `<span class="pokemon-card type ${types[i].type.name}">${types[i].type.name}</span>`;
-  }
-  return typesHTML;
-}
-
-
-function generateAbilitiesHTML(abilities) {
-  let abilitiesHTML = '';
-  if (abilities && abilities.length > 0) {
-    for (let i = 0; i < abilities.length; i++) {
-      abilitiesHTML += `<span class="ability">${abilities[i].ability.name}</span>`;
-      if (i < abilities.length - 1) {
-        abilitiesHTML += ', ';
-      }
-    }
-  } else {
-    abilitiesHTML = '<span class="ability unknown">No Abilities</span>';
-  }
-  return abilitiesHTML;
-}
-
-
-async function showDetails(pokemonId) {// html für type, height, weight, abilities
-  const pokemon = await fetchPokemonDetails(`${POKEAPI_URL}${pokemonId}`);
-  const overlay = document.getElementById('overlay');
-  const details = document.getElementById('pokemonDetails');
-
-  details.innerHTML = generatePokemonDetailsHTML(pokemon);
-
-  overlay.dataset.currentPokemonId = pokemonId;
-  overlay.classList.remove('hidden');
-  document.body.classList.add('no-scroll'); 
-}
-
 
 function generatePokemonDetailsHTML(pokemon) {
   const typesHTML = generateTypesHTML(pokemon.types);
@@ -99,13 +44,3 @@ function generatePokemonDetailsHTML(pokemon) {
   `;
 }
 
-function closeOverlay() {
-document.getElementById('overlay').classList.add('hidden');
-document.body.classList.remove('no-scroll');  
-}
-
-//NO RESULT FOUND DIV
-function displayNoResultsMessage() {
-  const pokedex = document.getElementById('pokedex');
-  pokedex.innerHTML = '<div class="no-results">No Resulsts!</div>';
-}

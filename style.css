@@ -15,7 +15,7 @@ main {
 
 
 body.no-scroll {
-  overflow-y: scroll;
+  overflow: hidden;
 }
 
 header {
@@ -167,7 +167,7 @@ header img{
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  pointer-events: all;
+  overflow: hidden;
 }
 
 #overlay.hidden {
